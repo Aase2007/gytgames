@@ -1,1 +1,3 @@
 # gytgames
+
+vi elsker deg 
