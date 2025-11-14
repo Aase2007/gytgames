@@ -1,6 +1,5 @@
 
 function createHeader() {
-  console.log("kjør")
   header = document.createElement("div");
   title = document.createElement("h1");
   header.setAttribute("id","headerbox");
