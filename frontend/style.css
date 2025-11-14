@@ -1,4 +1,17 @@
 
 body{
     background-color:#F8E8CC;
+    margin: 0px;
+}
+
+#headerbox{
+    width: 100vw;
+    background-color: #914E56;
+
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+#headertitle{
+    padding: 4px;
 }
