@@ -1,6 +1,13 @@
 
+const API_URL = "http://localhost:3000"
 
+async function getsudoku(){
+  const res = await fetch(API_URL + "/sudokutask");
+  const data = await res.json();
+  console.log(data)
+}
 
+getsudoku()
 
 function showsudoku(sudoku){
   let sudokubox = document.getElementById("sudoku")
@@ -25,4 +32,3 @@ function showsudoku(sudoku){
     }
   }
 }
-showsudoku(sudoku)

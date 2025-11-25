@@ -3,6 +3,8 @@ const express = require("express")
 const app = express()
 app.use(express.json());
 const port = 3000;
+let cors = require("cors")
+app.use(cors())
 
 app.get("/home", (req, res) => {
   res.send("Hello!");
