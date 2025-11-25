@@ -11,6 +11,7 @@ body{
     height: 10vh;
     display: flex;
     align-items: center;
+    position: fixed;
 }
 #headertitle{
     padding: 4px;
