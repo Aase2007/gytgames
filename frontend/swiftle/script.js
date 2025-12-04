@@ -103,7 +103,8 @@ let answer // Oppretter answer som en top string sånn at den er global
 const removeList = [ // Oppretter en liste med strings som skal bli fjernet fra "answer" variabelen
   ` (Taylor's Version)`,` (From The Vault)`,
   ` - Radio Single Remix`,` - Pop Version`,` - bonus track`,
-  ` (feat. Colbie Caillat)`,` (feat. Marren Morris)`,` (feat. Keith Urban)`,` (feat. Fall Out Boy)`,` (feat. Hayley Williams)`,` (feat. Gary Lightbody of Snow Patrol)`,` (feat. Ed Sheeran)`,` (feat. Phoebie Bridgers)`,` (feat. Chris Stapleton)`,` (feat. Kendrick Lamar)`,` (feat. The Chicks)`,` (feat. Brendon Urie of Panic! At The Disco)`,` (feat. Bon Iver)`,` (feat. HAIM)`,` (feat. The National)`,` (feat. Lana Del Rey)`,` (feat. More Lana Del Rey)`,` (feat. Ice Spice)`,` (feat. Post Malone)`,` (feat. Florence + The Machine)`,` (feat. Sabrina Carpenter)`
+  ` (feat. Colbie Caillat)`,` (feat. Marren Morris)`,` (feat. Keith Urban)`,` (feat. Fall Out Boy)`,` (feat. Hayley Williams)`,` (feat. Gary Lightbody of Snow Patrol)`,` (feat. Ed Sheeran)`,` (feat. Phoebie Bridgers)`,` (feat. Chris Stapleton)`,` (feat. Kendrick Lamar)`,` (feat. The Chicks)`,` (feat. Brendon Urie of Panic! At The Disco)`,` (feat. Bon Iver)`,` (feat. HAIM)`,` (feat. The National)`,` (feat. Lana Del Rey)`,` (feat. More Lana Del Rey)`,` (feat. Ice Spice)`,` (feat. Post Malone)`,` (feat. Florence + The Machine)`,` (feat. Sabrina Carpenter)`,
+  `'`
 ];
 let guessCount = 0;
 let playBackTime = [1,2,4,8,16,32]
@@ -171,7 +172,7 @@ async function pausePlayback() {
 
 // Database fetch:
 function getSongsFromDatabase(album_name, track_number) {
-  const API_URL = 'http://localhost:3000/songs'
+  const API_URL = 'http://localhost:3000/swiftleAnswer'
 
   let albumbundle = {
     'album_name': album_name,
