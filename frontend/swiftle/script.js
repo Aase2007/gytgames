@@ -102,17 +102,17 @@ let random_int = 0 // Oppretter variablen random_int og gir den verdien 0 sånn 
 let answer // Oppretter answer som en top string sånn at den er global
 const removeList = [ // Oppretter en liste med strings som skal bli fjernet fra "answer" variabelen
   ` (Taylor's Version)`,` (From The Vault)`,
-  ` - Radio Single Remix`,` - Pop Version`,` - bonus track`,
+  ` - Radio Single Remix`,` - Pop Version`,` - bonus track`, `(Oh My My My)`,
   ` (feat. Colbie Caillat)`,` (feat. Marren Morris)`,` (feat. Keith Urban)`,` (feat. Fall Out Boy)`,` (feat. Hayley Williams)`,` (feat. Gary Lightbody of Snow Patrol)`,` (feat. Ed Sheeran)`,` (feat. Phoebie Bridgers)`,` (feat. Chris Stapleton)`,` (feat. Kendrick Lamar)`,` (feat. The Chicks)`,` (feat. Brendon Urie of Panic! At The Disco)`,` (feat. Bon Iver)`,` (feat. HAIM)`,` (feat. The National)`,` (feat. Lana Del Rey)`,` (feat. More Lana Del Rey)`,` (feat. Ice Spice)`,` (feat. Post Malone)`,` (feat. Florence + The Machine)`,` (feat. Sabrina Carpenter)`,
-  `'`
+  `'`, `'`, `'`, `!!!`, `!`, `?`, `...`, `.`, `,`, `,`, `,`, `(`, `)`, `"`, `"`
 ];
 let guessCount = 0;
 let playBackTime = [1,2,4,8,16,32]
 
 function pickRandomSong(){
   if (!random_int) { // Hvis random_int = False kjøres dette:
-    random_int = Math.floor(Math.random() * 11);
-    console.log(random_int+1)
+    random_int = Math.floor(Math.random() * 12);
+    console.log(`Index: ${random_int}, Album nr.: ${random_int+1}`)
     pickRandomTrackNr(random_int)
   } else { // Hvis random_int slår ut som True går den bare videre til neste funksjon, sånn at det ikke kommer en ny sang hver gang man trykker på knappen
     pickRandomTrackNr(random_int)
@@ -132,7 +132,7 @@ async function pickRandomTrackNr(random_int) {
     .then(response => response.json())
     .then(data => {
       trackNr = Math.floor(Math.random() * data.total_tracks) // Velger et tilfeldig tall basert på hvor mange sanger det er på albumet man henter 
-      console.log(trackNr+1)
+      console.log(`Index: ${trackNr}, Track nr.: ${trackNr+1}`)
       getSongsFromDatabase(data.name, trackNr+1)
       startPlaybackOnDevice(random_int, trackNr) // Sender inn random_int for albumet og trackNr for hvilken sang som skal spilles av
       setTimeout(() => {
@@ -191,7 +191,7 @@ function getSongsFromDatabase(album_name, track_number) {
   })
   .then(data => {
     answer = data
-    console.log(answer)
+    console.log(`Svar hentet fra databsen: ${answer}`)
   })
   
 }
@@ -213,6 +213,10 @@ function guessSong() {
   removeList.forEach(str => {
     answer = answer.replace(str, "");
   });
+  answer.replace(`&`, `and`)
+  answer.replace(`$`, `s`)
+  answer.replace(`-`,` `)
+
   answer = answer.trim();
   
   console.log("User guessed:", guess)
