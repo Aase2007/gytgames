@@ -1,1 +1,6 @@
-{}
+{
+  "dependencies": {
+    "mariadb": "^3.4.5",
+    "xlsx": "^0.18.5"
+  }
+}
