@@ -5,7 +5,7 @@ const clientId = '06a4f77d92e745f29d2687d2700fa83e';
 const clientSecret = '8761d61fc4b2425cb90d4cc3daae0094';
 const deviceId = '0e4b74686d0dbad536b40501463327d124b3d9e8';
 const tokenUrl = 'https://accounts.spotify.com/api/token';
-let trackNr = 0;
+let trackNr = null;
 const albumUri = [
   "5eyZZoQEFQWRHkV2xgAeBw", // Taylor Swift - 0
   "4hDok0OAJd57SGIT8xuWJH", // Fearless - 1
@@ -98,7 +98,7 @@ async function startPlaybackOnDevice(album, trackNr) {
 
 // Games-siden sin javascript:
 
-let random_int = 0 // Oppretter variablen random_int og gir den verdien 0 sånn at den er deklarert med slår av som false i løkken
+let random_int = null // Oppretter variablen random_int og gir den verdien 0 sånn at den er deklarert med slår av som false i løkken
 let answer // Oppretter answer som en top string sånn at den er global
 const removeList = [ // Oppretter en liste med strings som skal bli fjernet fra "answer" variabelen
   ` (Taylor's Version)`,` (From The Vault)`,
@@ -110,7 +110,7 @@ let guessCount = 0;
 let playBackTime = [1,2,4,8,16,32]
 
 function pickRandomSong(){
-  if (!random_int) { // Hvis random_int = False kjøres dette:
+  if (random_int === null) { // Hvis random_int = False kjøres dette:
     random_int = Math.floor(Math.random() * 12);
     console.log(`Index: ${random_int}, Album nr.: ${random_int+1}`)
     pickRandomTrackNr(random_int)
@@ -123,7 +123,7 @@ async function pickRandomTrackNr(random_int) {
   if (!accessToken) {
       await refreshAccessToken(); // Kaller på refreshtoken funksjonen sånn at den kan hente ut data fra API-en
     }
-  if (!trackNr) { // Hvis trackNr ikke eksisterer enda må den finne ut av hvilken track den skal spille
+  if (trackNr === null) { // Hvis trackNr ikke eksisterer enda må den finne ut av hvilken track den skal spille
     
     fetch(`https://api.spotify.com/v1/albums/${albumUri[random_int]}`, { // Henter albumet basert på hvilken tall man fikk fra dne forrige funksjonen
       method: "GET",
@@ -213,9 +213,11 @@ function guessSong() {
   removeList.forEach(str => {
     answer = answer.replace(str, "");
   });
-  answer.replace(`&`, `and`)
-  answer.replace(`$`, `s`)
-  answer.replace(`-`,` `)
+  answer = answer
+  .replace(`&`, `and`)
+  .replace(`$`, `s`)
+  .replace(`$`, `s`)
+  .replace(`-`,` `)
 
   answer = answer.trim();
   
