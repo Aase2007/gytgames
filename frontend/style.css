@@ -2,6 +2,7 @@
 body{
     background-color:#F8E8CC;
     margin: 0px;
+    overflow: hidden;
 }
 
 #headerbox{
@@ -15,4 +16,15 @@ body{
 }
 #headertitle{
     padding: 4px;
+}
+#karusell{
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.carouselImg{
+    width: 200px;
+    height: 200px;
 }
