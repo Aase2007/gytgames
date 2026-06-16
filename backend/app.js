@@ -7,6 +7,8 @@ let cors = require("cors")
 app.use(cors())
 const database = require('./dbconnector.js')
 
+let sudokuvars = {"task": sudoku.globaltask, "sol": sudoku.globalsol}
+
 app.get("/home", (req, res) => {
   res.send("Hello!");
 });
@@ -16,18 +18,28 @@ app.listen(port, () => {
 });
 
 app.get("/sudokutask", (req,res)=>{
-  let task = sudoku.globaltask
-  res.send(task)
+  console.log("sudoku req")
+  res.send(sudokuvars.task)
 })
 
 app.post("/sudokusolve", (req,res)=>{
-  let usrsol = req.body
-  let sol = sudoku.globalsol
-  if (usrsol==sol){
+  console.log("recived sudoku")
+  let usr = req.body
+  let usrsol = usr.sudoku
+  let sol = sudokuvars.sol
+  console.log(sol)
+  console.log(usrsol)
+  if (sol.every((element, index)=> element === usrsol[index])){
+    console.log(true)
     res.send(true)
   } else {
+    console.log(false)
     res.send(false)
   }
+})
+app.get("/sudoku", (req,res)=>{
+  let sol = sudoku.globalsol
+  res.send(sol)
 })
 
 app.post("/swiftleAnswer", async (req, res) => {
